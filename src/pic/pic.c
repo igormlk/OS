@@ -3,7 +3,7 @@
 //
 
 #include "pic.h"
-#include "monitor.h"
+#include "../monitor/monitor.h"
 
 void io_wait_pic()
 {

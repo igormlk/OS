@@ -3,8 +3,8 @@
 //
 
 #include "isr.h"
-#include "monitor.h"
-#include "pic.h"
+#include "../monitor/monitor.h"
+#include "../pic/pic.h"
 
 isr_t interrupt_handlers[256];
 

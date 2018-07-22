@@ -5,8 +5,8 @@
 #ifndef SRC_PAGING_H
 #define SRC_PAGING_H
 
-#include "stdint.h"
-#include "isr.h"
+#include "../libs/stdint.h"
+#include "../cpu/isr.h"
 
 typedef struct page
 {

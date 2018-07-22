@@ -5,12 +5,12 @@
 #ifndef SRC_MONITOR_H
 #define SRC_MONITOR_H
 
-#include "Input_Output.h"
-#include "stddef.h"
-#include "stdbool.h"
-#include "string.h"
-#include "stdint.h"
-#include "stdarg.h"
+#include "../libs/Input_Output.h"
+#include "../libs/stddef.h"
+#include "../libs/stdbool.h"
+#include "../libs/string.h"
+#include "../libs/stdint.h"
+#include "../libs/stdarg.h"
 
 void monitor_put(char c);
 

@@ -7,8 +7,8 @@
 
 #include "stdbool.h"
 #include "stddef.h"
-#include "errno-base.h"
-#include "ctype.h"
+#include "../cpu/errno-base.h"
+#include "../libs/ctype.h"
 #include "stdint.h"
 
 /**

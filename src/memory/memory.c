@@ -3,7 +3,7 @@
 //
 
 #include "memory.h"
-#include "stddef.h"
+#include "../libs/stddef.h"
 
 #define ALIGN_ADDRESS 0xFFFFF000
 #define BLOCK_SIZE_ADDR 0x1000

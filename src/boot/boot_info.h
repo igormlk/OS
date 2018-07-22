@@ -5,7 +5,7 @@
 #ifndef SRC_BOOT_INFO_H
 #define SRC_BOOT_INFO_H
 
-#include "stdint.h"
+#include "../libs/stdint.h"
 
 struct multiboot {
     uint32_t flags;

@@ -3,9 +3,9 @@
 //
 
 #include "paging.h"
-#include "stddef.h"
+#include "../libs/stddef.h"
 #include "memory.h"
-#include "monitor.h"
+#include "../monitor/monitor.h"
 
 extern uint32_t placement_address;
 

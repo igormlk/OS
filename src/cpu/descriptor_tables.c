@@ -2,9 +2,9 @@
 // Created by root on 5/10/18.
 //
 #include "descriptor_tables.h"
-#include "string.h"
-#include "monitor.h"
-#include "pic.h"
+#include "../libs/string.h"
+#include "../monitor/monitor.h"
+#include "../pic/pic.h"
 #include "isr.h"
 
 #define KERNEL_CODE_SEGMENT 0x08

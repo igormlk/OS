@@ -3,9 +3,9 @@
 //
 
 #include "pit.h"
-#include "isr.h"
-#include "Input_Output.h"
-#include "monitor.h"
+#include "../cpu/isr.h"
+#include "../libs/Input_Output.h"
+#include "../monitor/monitor.h"
 
 #define CHANNEL0_DATA 0x40
 #define CHANNEL1_DATA 0x41
