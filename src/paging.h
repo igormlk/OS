@@ -33,12 +33,13 @@ typedef struct page_directory
 
 void init_paging(uint64_t mem_size);
 
-void switch_page_directory(page_directory_t * new);
+void switch_page_directory(page_directory_t * new_page);
 
 page_t * get_page(uint32_t address, int make, page_directory_t * dir);
 
 void page_fault(registers_t regs);
 
+void debug_mem();
 
 
 #endif //SRC_PAGING_H

@@ -20,25 +20,41 @@ typedef struct mem_node
     mem_chunk_t * first;
     mem_chunk_t * last;
     uint32_t memory_used;
+    uint32_t chunks_used;
     uint32_t total_memory;
     uint32_t total_chunks;
 }mem_node_t;
 
 static mem_node_t memory;
 
+mem_chunk_t * new_mem_chunk(){
+    mem_chunk_t * ptr = (mem_chunk_t *) kmalloc(sizeof(mem_chunk_t));
+    ptr->next_mem_chunk = NULL;
+    ptr->frame = 0x0;
+    return ptr;
+}
+
 void init_node_chunks(uint64_t mem_size)
 {
-
-    uint32_t chunks = (uint32_t) (mem_size / 0x1000);
-    memory.total_memory = chunks * sizeof(mem_chunk_t);
-    memory.first = (mem_chunk_t *) kmalloc(sizeof(mem_chunk_t));
-    memory.last = memory.first;
+    uint64_t chunks = (mem_size / 0x1000);
+    memory.total_memory = (mem_size/(1024*1024));
     memory.total_chunks = chunks;
     memory.memory_used = 0;
-
-    printf("\nNumero de chunks %d", chunks);
-    printf("\nTamanho de cada chunk %d", sizeof(mem_chunk_t));
+    memory.chunks_used = 0;
+    memory.first = new_mem_chunk();
+    memory.last = memory.first;
+    debug_mem();
 }
+
+void debug_mem()
+{
+    printf("\nNumero de chunks %d", memory.total_chunks);
+    printf("\nTamanho de cada chunk %d", sizeof(mem_chunk_t));
+    printf("\nTotal de Memoria %dMB", memory.total_memory);
+    printf("\nTotal de Chunks usadas %d", memory.chunks_used);
+    printf("\nTotal de Memoria usada %dMB", memory.memory_used);
+}
+
 
 static void set_mem_chunk(uint32_t frame_addr)
 {
@@ -96,7 +112,7 @@ void init_paging(uint64_t mem_size)
     print_nodes();
 }
 
-void switch_page_directory(page_directory_t * new)
+void switch_page_directory(page_directory_t * newPage)
 {
 
 }

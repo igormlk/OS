@@ -22,8 +22,6 @@ void isr_handler(registers_t regs)
 
 void irq_handler(registers_t regs)
 {
-    printf("IRQ WAS HANDLED \n");
-
     if(regs.int_no >= 40)
         reset_slave_pic();
 

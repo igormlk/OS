@@ -30,15 +30,16 @@ int main(struct multiboot *mboot_ptr)
     printf("MultiBoot Info MemoryMap Length: 0x%x \n",mboot_ptr->mmap_length);
     printf("MultiBoot Info BootDevice: 0x%x \n",mboot_ptr->boot_device);
     printf("MultiBoot Info ConfigTable: 0x%x \n",mboot_ptr->config_table);
+
     init_descriptor_tables();
-    init_timer(0xFFFF);
-    uint64_t mem_size = (mboot_ptr->high_mem << 31) | mboot_ptr->low_mem ;
-    mem_size *= 1024;
-    init_paging(mem_size);
-    printf("\nTotal Memory 0x%d", mem_size);
+    disable_timer();
+    uint64_t mem_size = (mboot_ptr->high_mem) | mboot_ptr->low_mem ;
+    printf("\nTotal Memory Size 0x%x", mem_size/1024);
+    init_paging(mem_size * 1024);
 
-    //sti();
+    cli();
 
+    printf("\nHello World");
 
     return 0;
 }

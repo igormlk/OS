@@ -45,6 +45,9 @@ static void timer_callback(registers_t regs)
 
 void init_timer(uint32_t frequency)
 {
+    if(frequency <= 0)
+        frequency = 1;
+
     register_interrupt_handler(IRQ0, &timer_callback);
     uint32_t divisor = PIT_FREQUENCY / frequency;
 
@@ -59,5 +62,19 @@ void init_timer(uint32_t frequency)
     outByte(CHANNEL0_DATA, (uint8_t) (divisor & 0xFF));
     io_wait_pit();
     outByte(CHANNEL0_DATA, (uint8_t) ((divisor >> 8) & 0xFF));
+    io_wait_pit();
+}
+
+void disable_timer()
+{
+    uint8_t command = (CHANNEL0 << 6) | (ACCESS_LOHIBYTE << 4) | (0 << 1) | (BINARY_MODE);
+
+    printf("Command : 0x%x", command);
+
+    outByte(COMMAND_REGISTER,command);
+    io_wait_pit();
+    outByte(CHANNEL0_DATA, (uint8_t) (0 & 0xFF));
+    io_wait_pit();
+    outByte(CHANNEL0_DATA, (uint8_t) ((0 >> 8) & 0xFF));
     io_wait_pit();
 }
